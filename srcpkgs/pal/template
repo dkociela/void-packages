@@ -1,0 +1,28 @@
+# Template file for 'pal'
+
+pkgname="pal"
+version="0.4.3"
+revision=1
+nostrip=yes
+build_wrksrc=src
+hostmakedepends="pkg-config gettext-devel ncurses-devel readline-devel glib-devel"
+makedepends="glib-devel"
+short_desc="Command line calendar that can keep track of events"
+maintainer="Dan Kociela <dkociela@gmail.com>"
+license="GPL-2"
+homepage="http://palcal.sourceforge.net/"
+distfiles="${SOURCEFORGE_SITE}/project/palcal/$pkgname/$version/$pkgname-$version.tgz"
+checksum="ce470cb7be76522ff58cd0325ad7817b6cc2132a5e0cea55de8c9eb63b54551c"
+do_build() {
+	: ${make_cmd:=make}
+
+	${make_cmd} ${makejobs} ${make_build_args} ${make_build_target}
+}
+
+do_install() {
+	: ${make_cmd:=make}
+	: ${make_install_target:=install}
+
+	${make_cmd} DESTDIR=${DESTDIR} ${make_install_args} ${make_install_target}
+}
+
